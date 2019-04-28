@@ -16,7 +16,7 @@ function doMeasurement() {
     try {
         readTemp().then(temp => influxTransform(temp, measurementName))
             .then(data =>
-                influx.writePoints([data])
+                influx.writePoints(data)
                     .then(() => { })
                     .catch(err => console.error(err)));
     } catch (err) {
