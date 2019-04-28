@@ -1,6 +1,7 @@
 
 const util = require('util');
 const readFile = util.promisify(require('fs').readFile);
+const cron = require('cron');
 
 const Influx = require('influx');
 const influxConfig = require('./influxConfig');
