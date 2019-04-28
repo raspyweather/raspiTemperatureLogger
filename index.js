@@ -14,7 +14,7 @@ const readTemp = () => readFile('/sys/class/thermal/thermal_zone0/temp').then(da
 
 function doMeasurement() {
     try {
-        readTemp.then(temp => influxTransform(temp, measurementName))
+        readTemp().then(temp => influxTransform(temp, measurementName))
             .then(data =>
                 influx.writePoints([data])
                     .then(() => { })
