@@ -10,7 +10,8 @@ module.exports = {
         measurement: 'cpu_temp',
         fields: {
             temperature: Influx.FieldType.FLOAT,
+            device:Influx.FieldType.STRING
         },
-        tags: ["temperature"]
+        tags: ["device"]
     }]
 };

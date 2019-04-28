@@ -2,9 +2,9 @@ module.exports = {
     transformForInflux: (data, measurementName) => {
         return [{
             measurement: measurementName,
-            fields: {},
+            fields: { temperature: data},
             tags: {
-                temperature: data
+               device:'pi'
             }
         }];
     }
