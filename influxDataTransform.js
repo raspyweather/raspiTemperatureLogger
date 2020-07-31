@@ -3,8 +3,8 @@ module.exports = {
         return data.map(entry => {
             return {
                 measurement: measurementName,
-                fields: { ...entry },
-                tags:{ }
+                fields: { temperature: entry.temperature },
+                tags: { name: entry.name }
             }
         });
     }

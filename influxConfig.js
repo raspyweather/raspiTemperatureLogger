@@ -9,7 +9,6 @@ module.exports = {
     schema: [{
         measurement: 'temperatures',
         fields: {
-            name: Influx.FieldType.STRING,
             temperature: Influx.FieldType.FLOAT
         },
         tags: ["name"]
