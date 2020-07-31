@@ -11,8 +11,14 @@ services:
     volumes:
       - /sys/class/thermal:/sys/class/thermal
     environment:
-      - DB_HOST="localhost"
-      - DB_USER="admin"
-      - DB_PASS="admin"
-    external_links:
-      - influxdb
+      - DB_HOST=influxdb
+      - DB_USER=admin
+      - DB_NAME=db1
+      - DB_PASS=admin
+    networks:
+      - default
+
+networks:
+  default:
+    external:
+      name: docker-tig_docker-tig

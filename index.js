@@ -2,6 +2,10 @@ const util = require('util');
 const readFile = util.promisify(require('fs').readFile);
 const readdir = util.promisify(require('fs').readdir);
 
+const getDirectories = source => readdir(source, { withFileTypes: true })
+    .then(dirs => dirs.filter(dirent => dirent.isDirectory()).map(dirent => dirent.name));
+
+getDirectories("..").then(dirs=>console.log(dirs));
 
 const cron = require('cron');
 
@@ -12,9 +16,6 @@ const influxTransform = require('./influxDataTransform').transformForInflux;
 
 const influx = new Influx.InfluxDB(influxConfig);
 const measurementName = influxConfig.schema[0].measurement;
-
-const getDirectories = source => readdir(source, { withFileTypes: true })
-    .then(dirs => dirs.filter(dirent => dirent.isDirectory()).map(dirent => dirent.name));
 
 const getThermalZones = () => getDirectories('/sys/class/thermal/')
     .then(dirs => dirs.filter(x => x.startsWith('thermal_zone')));

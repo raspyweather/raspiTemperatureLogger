@@ -3,10 +3,8 @@ module.exports = {
         return data.map(entry => {
             return {
                 measurement: measurementName,
-                fields: { ...data },
-                tags: {
-                    device: 'pi'
-                }
+                fields: { ...entry },
+                tags:{ }
             }
         });
     }
