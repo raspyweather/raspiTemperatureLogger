@@ -37,6 +37,8 @@ async function doMeasurement() {
         for (const zone of zones) {
             try { data.push(await readThermal(zone)); } catch (err) { console.error(err); }
         }
+        
+        console.log(data);
 
         influx.writePoints(influxTransform(data, measurementName));
     } catch (err) {

@@ -2,6 +2,12 @@ version: "3.2"
 
 services:
   nodejs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: nodejs
+    container_name: nodejs
+    restart: always
     volumes:
       - /sys/class/thermal:/sys/class/thermal
     environment:
