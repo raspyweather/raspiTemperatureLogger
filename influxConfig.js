@@ -1,17 +1,17 @@
 const Influx = require('influx');
 module.exports = {
-    host: 'localhost',
+    host: process.env.DB_HOST,
     database: 'telegraf',
     protocol: 'http',
     username: process.env.DB_USER,
     password: process.env.DB_PASS,
     port: 8086,
     schema: [{
-        measurement: 'cpu_temp',
+        measurement: 'temperatures',
         fields: {
             temperature: Influx.FieldType.FLOAT,
-            device:Influx.FieldType.STRING
+            name: Influx.FieldType.STRING
         },
-        tags: ["device"]
+        tags: ["name"]
     }]
 };
