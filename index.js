@@ -39,7 +39,7 @@ async function doMeasurement() {
 
         console.log(data);
 
-        influx.writePoints(influxTransform(data, measurementName));
+        await influx.writePoints(influxTransform(data, measurementName));
     } catch (err) {
         console.error(err);
     }
