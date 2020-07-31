@@ -17,7 +17,7 @@ const getThermalZones = () => readdir('/sys/class/thermal/')
 
 const readThermal = async (zone) => {
     const temperature = parseFloat((await readFile(`/sys/class/thermal/${zone}/temp`)).toString()) / 1000;
-    const name = (await readFile(`'/sys/class/thermal/${zone}/type`)).toString();
+    const name = (await readFile(`/sys/class/thermal/${zone}/type`)).toString();
     return { temperature, name };
 }
 
